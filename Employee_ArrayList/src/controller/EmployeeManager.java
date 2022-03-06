@@ -6,8 +6,9 @@ import model.ParttimeEmployee;
 
 import java.util.ArrayList;
 
-public class Method {
-    public static ArrayList<Employee> employees = new ArrayList<>();
+public class EmployeeManager {
+    public static
+    public static ArrayList<Employee> employeeList = new ArrayList<>();
 
 //    hiển thị danh sách
     public static void displayAllEmployee(){

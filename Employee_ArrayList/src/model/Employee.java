@@ -20,6 +20,17 @@ public abstract class Employee {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeId='" + employeeId + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", age=" + age +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
     public String getEmployeeId() {
         return employeeId;
     }

@@ -7,7 +7,8 @@ public class FulltimeEmployee extends Employee {
 
     @Override
     public double getNetSalary() {
-        return 0;
+        double result = baseSalary + (bonus - fineMoney);
+        return result;
     }
 
     public FulltimeEmployee() {
@@ -53,7 +54,12 @@ public class FulltimeEmployee extends Employee {
     @Override
     public String toString() {
         return "FulltimeEmployee{" +
-                "bonus=" + bonus +
+                "employeeId='" + getEmployeeId() + '\'' +
+                ", fullName='" + getFullName() + '\'' +
+                ", age=" + getAge() +
+                ", phoneNumber='" + getPhoneNumber() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", bonus=" + bonus +
                 ", fineMoney=" + fineMoney +
                 ", baseSalary=" + baseSalary +
                 '}';

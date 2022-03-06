@@ -4,49 +4,72 @@ import model.Employee;
 import model.FulltimeEmployee;
 import model.ParttimeEmployee;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Method {
+
     public static void displayEmployee(Employee[] employees){
-        for (Employee e: employees) {
-            System.out.println(e);
+        if(employees.length == 0){
+            System.out.println("Nothing to see here...");
+        }else {
+            for (Employee e: employees) {
+                System.out.println(e);
+            }
         }
     }
 
     public static Employee createNewFullTimeEmployee(){
-        Scanner inputFullTimeID = new Scanner(System.in);
+        Scanner FullTimeID = new Scanner(System.in);
         System.out.println("Mời bạn nhập vào số ID của Fulltime Employee:");
-        String id = inputFullTimeID.nextLine();
-
-        Scanner inputFullTimeName = new Scanner(System.in);
+        String id = FullTimeID.nextLine();
+        Scanner FullTimeName = new Scanner(System.in);
         System.out.println("Mời bạn nhập vào tên của Fulltime Employee:");
-        String name = inputFullTimeName.nextLine();
-
-        Scanner inputFullTimeAge = new Scanner(System.in);
+        String name = FullTimeName.nextLine();
+        Scanner FullTimeAge = new Scanner(System.in);
         System.out.println("Mời bạn nhập vào tuổi của Fulltime Employee:");
-        int age = inputFullTimeAge.nextInt();
-
-        Scanner inputFullTimePhoneNumber = new Scanner(System.in);
+        int age = FullTimeAge.nextInt();
+        Scanner FullTimePhoneNumber = new Scanner(System.in);
         System.out.println("Mời bạn nhập vào Phone number của Fulltime Employee:");
-        String phoneNumber = inputFullTimePhoneNumber.nextLine();
-
-        Scanner inputFullTimeEmail = new Scanner(System.in);
+        String phoneNumber = FullTimePhoneNumber.nextLine();
+        Scanner FullTimeEmail = new Scanner(System.in);
         System.out.println("Mời bạn nhập vào email của Fulltime Employee:");
-        String email = inputFullTimeEmail.nextLine();
-
-        Scanner inputFullTimeBonus = new Scanner(System.in);
+        String email = FullTimeEmail.nextLine();
+        Scanner FullTimeBonus = new Scanner(System.in);
         System.out.println("Mời bạn nhập vào số tiền thưởng của Fulltime Employee:");
-        int bonus = inputFullTimeBonus.nextInt();
-
-        Scanner inputFullTimeFineMoney = new Scanner(System.in);
+        int bonus = FullTimeBonus.nextInt();
+        Scanner FullTimeFineMoney = new Scanner(System.in);
         System.out.println("Mời bạn nhập vào số tiền phạt của Fulltime Employee:");
-        int fineMoney = inputFullTimeFineMoney.nextInt();
-
-        Scanner inputFullTimeBaseSalary = new Scanner(System.in);
+        int fineMoney = FullTimeFineMoney.nextInt();
+        Scanner FullTimeBaseSalary = new Scanner(System.in);
         System.out.println("Mời bạn nhập vào số lương cứng của Fulltime Employee:");
-        int baseSalary = inputFullTimeBaseSalary.nextInt();
+        int baseSalary = FullTimeBaseSalary.nextInt();
 
         Employee newEmployee = new FulltimeEmployee(id, name, age, phoneNumber, email, bonus, fineMoney, baseSalary);
+        return newEmployee;
+    }
+
+    public static Employee createNewPartTimeEmployee(){
+        Scanner partTimeID = new Scanner(System.in);
+        System.out.println("Mời bạn nhập vào số ID của Parttime Employee:");
+        String id2 = partTimeID.nextLine();
+        Scanner partTimeName = new Scanner(System.in);
+        System.out.println("Mời bạn nhập vào tên của Parttime Employee:");
+        String name2 = partTimeName.nextLine();
+        Scanner partTimeAge = new Scanner(System.in);
+        System.out.println("Mời bạn nhập vào tuổi của Parttime Employee:");
+        int age2 = partTimeAge.nextInt();
+        Scanner partTimePhoneNumber = new Scanner(System.in);
+        System.out.println("Mời bạn nhập vào Phone number của Parttime Employee:");
+        String phoneNumber2 = partTimePhoneNumber.nextLine();
+        Scanner partTimeEmail = new Scanner(System.in);
+        System.out.println("Mời bạn nhập vào email của Parttime Employee:");
+        String email2 = partTimeEmail.nextLine();
+        Scanner partTimeWorkhour = new Scanner(System.in);
+        System.out.println("Mời bạn nhập vào số giờ làm của Parttime Employee:");
+        int workHour = partTimeWorkhour.nextInt();
+
+        Employee newEmployee = new ParttimeEmployee(id2, name2, age2, phoneNumber2, email2, workHour);
         return newEmployee;
     }
 
@@ -75,5 +98,44 @@ public class Method {
         return employees;
     }
 
+    //Viết phương thức liệt kê danh sách nhân viên toàn thời gian
+    // có mức lương thấp hơn mức lương trung bình của các nhân viên trong công ty.
+    public static double averageSalary(Employee[] employees){
+        double sum = 0;
+        int count = 0;
+        for (int i = 0; i < employees.length; i++) {
+            sum += employees[i].getNetSalary();
+            count++;
+        }
+        double avg = sum / count;
+        return avg;
+    }
+    public static void displayLowerFTSalary(Employee[] employees){
+        int count= 1;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] instanceof FulltimeEmployee){
+                if (employees[i].getNetSalary() < Method.averageSalary(employees)){
+                    System.out.println(count + ". " + employees[i].getFullName());
+                    count++;
+                }
+            }
+        }
+    }
 
+//    Viết phương thức tính tổng số lương phải trả cho tất cả các nhân viên bán thời gian.
+    public static double sumSalaryforPT (Employee[] employees){
+        double sum = 0;
+        for (int i = 0; i < employees.length; i++) {
+            if(employees[i] instanceof ParttimeEmployee){
+                sum += employees[i].getNetSalary();
+                sum++;
+            }
+        }
+        return sum;
+    }
+
+    //Viết phương thức sắp xếp nhân viên toàn thời gian theo số lương tăng dần.
+    public static void sortSalaryFL (Employee[] employees){
+
+    }
 }

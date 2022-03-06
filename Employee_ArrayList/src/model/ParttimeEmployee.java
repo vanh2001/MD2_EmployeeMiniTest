@@ -1,7 +1,7 @@
 package model;
 
 public class ParttimeEmployee extends Employee {
-    public static final int SALARYPERHOUR = 100;
+    public static final int SALARYPERHOUR = 100000;
     private double workHour;
 
     @Override
@@ -33,7 +33,12 @@ public class ParttimeEmployee extends Employee {
     @Override
     public String toString() {
         return "ParttimeEmployee{" +
-                "workHour=" + workHour +
+                "employeeId='" + getEmployeeId() + '\'' +
+                ", fullName='" + getFullName() + '\'' +
+                ", age=" + getAge() +
+                ", phoneNumber='" + getPhoneNumber() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", workHour=" + workHour +
                 '}';
     }
 }
