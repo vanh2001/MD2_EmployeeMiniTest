@@ -62,7 +62,7 @@ public class Client {
                     EmployeeManager.addNewEmployee(partTimeEmployee);
                     break;
                 case 2:
-                    FulltimeEmployee fullTimeEmployee = createNewFullTimeEmployee();
+                    FulltimeEmployee fullTimeEmployee = (FulltimeEmployee) createNewFullTimeEmployee();
                     EmployeeManager.addNewEmployee(fullTimeEmployee);
                     break;
                 case 0:
